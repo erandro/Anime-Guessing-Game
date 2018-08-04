@@ -2,7 +2,7 @@
 
 
 // ++Array++ of the words
-var words = ["bannana", "avocado", "good or bad"];
+var words = ["bannana", "avocado", "hello world"];
 
 // ++Array++ of chosen word
 var alredyChosen = [];
@@ -22,11 +22,6 @@ function startGame() {
         alredyChosen.push(chosenWord);
         game()
     }
-}
-
-
-function yes() {
-    document.getElementById("theWord").textContent = chosenWord;
 }
 
 
@@ -63,12 +58,13 @@ function game() {
                 SpaceInWord();
                 console.log(spacedWord);
                 countUp++;
+                var newLine = document.getElementById("theWord");
+                newLine.textContent = spacedWord;
             }
         }
     }
 
     addChar(' ');
-
 
     document.onkeyup = function (saveKey) {
         var userChar = saveKey.key;
