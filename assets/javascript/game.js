@@ -2,7 +2,7 @@
 
 
 // ++Array++ of the words
-var words = ["bannana", "avocado", "hello world"];
+var words = ["sword art online", "berserk", "kill la kill", "naruto shippuden", "digimon", "death parade", "no game no life", "nichijou", "one punch man", "katana maidens", "bleach", "hunter x hunter", "girls last tour", "basilisk", "the saga of tanya the evil", "kids on the slope", "the ancient magus bride", "zodiac war", "miss Kobayashis gragon maid", "food wars", "kinos journey", "ping pong the animation", "made in abyss", "little witch academia", "boruto", "death note", "fairy tail", "my hero academia", "naruto", "the twelve kingdoms", "neon genesis evangelion", "vision of escaflowne", "cowboy bebop", "pokemon", "dragon ball z", "attack on titan"];
 
 // ++Array++ of chosen word
 var alredyChosen = [];
@@ -30,7 +30,6 @@ function game() {
 
     // making empty arrays for later use and counts vars
     var wrongChar = [];
-    var rightChar = []; // didn't used that array
     var used_Char = [];
     var countDown = 5;
     var countUp = 0;
@@ -65,6 +64,12 @@ function game() {
     }
 
     addChar(' ');
+    var newLine = document.getElementById("theWord");
+    newLine.textContent = spacedWord;
+    var newCount = document.getElementById("countDown");
+    newCount.textContent = "You have " + countDown + " guesses left";
+    var WorngUsed = document.getElementById("wrongChar");
+    WorngUsed.textContent = wrongChar;
 
     document.onkeyup = function (saveKey) {
         var userChar = saveKey.key;
@@ -74,12 +79,15 @@ function game() {
         }
         else if ((chosenWord.indexOf(userChar) > -1)) {
             console.log(userChar + " is correct")
-            rightChar.push(userChar);
             used_Char.push(userChar);
             addChar(userChar);
             if (countUp === chosenWord.length) {
-                alert("You won!");
-                startGame();
+                window.setTimeout(function () {
+                    alert("You got that!");
+                    var winCount = document.getElementById("Winings");
+                    winCount.textContent = "Your winings: " + alredyChosen.length;
+                    startGame();
+                }, 1);
             }
         }
         else {
