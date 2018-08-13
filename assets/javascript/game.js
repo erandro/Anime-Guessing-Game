@@ -1,18 +1,78 @@
 // ***Hangman word game***
 
-var words = ["sword art online", "berserk", "kill la kill", "naruto shippuden", "digimon", "death parade", "no game no life", "nichijou", "one punch man", "katana maidens", "bleach", "hunter x hunter", "girls last tour", "basilisk", "the saga of tanya the evil", "kids on the slope", "the ancient magus bride", "zodiac war", "miss kobayashis dragon maid", "food wars", "kinos journey", "ping pong the animation", "made in abyss", "little witch academia", "boruto", "death note", "fairy tail", "my hero academia", "naruto", "the twelve kingdoms", "neon genesis evangelion", "vision of escaflowne", "cowboy bebop", "pokemon", "dragon ball z", "attack on titan"];
+// bug fixing:
+// 1. disable non letter keys - V
+// 2. fix capital letter situation - V
+// 3. add start button -
+// 4. 
+
+var animeShows = {
+    //"sword art online": "assets/images/",
+    "berserk": ["assets/images/berserk.png",
+        "assets/images/berserk2.png"
+    ],
+    //"kill la kill": "assets/images/",
+    //"naruto shippuden": "assets/images/",
+    "digimon": ["assets/images/digimon.png",
+        "assets/images/digimon2.png"
+    ],
+    //"death parade": "assets/images/",
+    //"no game no life": "assets/images/",
+    //"nichijou": "assets/images/",
+    //"one punch man": "assets/images/",
+    //"katana maidens": "assets/images/",
+    "bleach": ["assets/images/bleach.png",
+        "assets/images/bleach2.png"
+    ],
+    "hunter x hunter": ["assets/images/hunter_x_hunter.png",
+        "assets/images/hunter_x_hunter2.png"
+    ],
+    //"girls last tour": "assets/images/",
+    //"basilisk": "assets/images/",
+    //"the saga of tanya the evil": "assets/images/",
+    //"kids on the slope": "assets/images/",
+    //"the ancient magus bride": "assets/images/",
+    //"zodiac war": "assets/images/",
+    //"miss kobayashis dragon maid": "assets/images/",
+    //"food wars": "assets/images/",
+    //"kinos journey": "assets/images/",
+    //"ping pong the animation": "assets/images/",
+    //"made in abyss": "assets/images/",
+    //"little witch academia": "assets/images/",
+    "boruto": ["assets/images/boruto.png",
+        "assets/images/boruto2.png"
+    ],
+    //"death note": "assets/images/",
+    //"fairy tail": "assets/images/",
+    //"my hero academia": "assets/images/",
+    "naruto": ["assets/images/naruto.png",
+        "assets/images/naruto2.png"
+    ],
+    //"the twelve kingdoms": "assets/images/",
+    //"neon genesis evangelion": "assets/images/",
+    //"vision of escaflowne": "assets/images/",
+    //"cowboy bebop": "assets/images/",
+    "pokemon": ["assets/images/pokemon.png",
+        "assets/images/pokemon2.png"
+    ],
+    //"dragon ball z": "assets/images/",
+    //"attack on titan": "assets/images/"
+};
+var words = Object.keys(animeShows);
 var alredyChosenWords = [];
 var countWin = 0;
+var imgOpacity;
+var imgDarkerOpacity = 0;
 
-// Restart win count
-function reCountWin() {
-    countWin = 0;
+// Change img opacity
+function imgOpacityChange(theOpacity, imgIndex) {
+    imgOpacity = theOpacity;
+    document.getElementById("animeImage").style.opacity = imgOpacity;
+    document.getElementById("animeImage").src = animeShows[chosenWord][imgIndex];
 }
 
-// get unchosen word and start playing
-function startGame() {
-    chosenWord = words[Math.floor(Math.random() * words.length)];
-    console.log(chosenWord);
+// checks if word was choosed
+function isWordChosen() {
     if (words.length === alredyChosenWords.length) {
         alert("I'm out off words\n\nThanks for palying");
     }
@@ -22,8 +82,17 @@ function startGame() {
     } else {
         console.log("new word");
         alredyChosenWords.push(chosenWord);
+        imgDarkerOpacity = 0;
+        imgOpacityChange(0, 1);
         game();
     }
+}
+
+// get unchosen word and start playing
+function startGame() {
+    chosenWord = words[Math.floor(Math.random() * words.length)];
+    console.log(chosenWord);
+    isWordChosen()
 }
 
 // Starting the game
@@ -38,17 +107,14 @@ function game() {
     var countUp = 0;
 
     // Blank and space the chosen word
-    var charNum = chosenWord.length;
-    console.log(charNum)
-    var blankWord = "_".repeat(charNum);
-    console.log(blankWord)
+    var blankWord = "_".repeat(chosenWord.length);
     function SpaceInWord() {
         spacedWord = (blankWord.split('').join(' '));
     }
     SpaceInWord();
     console.log(spacedWord);
 
-    // Replace the correct character in the word
+    // making a function that: Replace the correct character in the word
     String.prototype.replaceAt = function (index, replacement) {
         return this.substr(0, index) + replacement + this.substr(index + replacement.length);
     }
@@ -61,8 +127,8 @@ function game() {
                 SpaceInWord();
                 console.log(spacedWord);
                 countUp++;
-                var newLine = document.getElementById("theWord");
-                newLine.textContent = spacedWord;
+                document.getElementById("theWord").textContent = spacedWord;
+                //document.getElementById("animeImage").src = "";
             }
         }
     }
@@ -71,52 +137,65 @@ function game() {
     addChar(' ');
 
     // Display the word, number of mistakes and worng characters in html 
-    var newLine = document.getElementById("theWord");
-    newLine.textContent = spacedWord;
-    var newCount = document.getElementById("countDown");
-    newCount.textContent = "You have " + countDown + " guesses left";
-    var WorngUsed = document.getElementById("wrongChar");
-    WorngUsed.textContent = wrongChar;
+    document.getElementById("theWord").textContent = spacedWord;
+    document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
+    document.getElementById("wrongChar").textContent = wrongChar;
 
     // When character is pressed sequence
-    document.onkeyup = function (saveKey) {
-        var userChar = saveKey.key;
+    document.onkeyup = function (pressedKey) {
+        var userChar = pressedKey.key;
         console.log("you chose " + userChar);
-        // check if character was used
-        if (used_Char.includes(userChar)) {
-            console.log("you already chose this character");
-        }
-        // check if character is in the word (if so - correct character sequence)
-        else if ((chosenWord.indexOf(userChar) > -1)) {
-            console.log(userChar + " is correct")
+
+        // Correct character sequence
+        function correctCharacter() {
             used_Char.push(userChar);
             addChar(userChar);
-            // check if whole word was guessed (if so - new game)
-            if (countUp === chosenWord.length) {
-                window.setTimeout(function () {
-                    alert("You got that!");
-                    countWin++;
-                    var winCount = document.getElementById("Winings");
-                    winCount.textContent = "Your winings: " + countWin;
-                    startGame();
-                }, 1);
-            }
+        }
+        // Guessed all characters sequence
+        function guessedAllCharacters() {
+            window.setTimeout(function () {
+                alert("You got that!");
+                countWin++;
+                document.getElementById("winings").textContent = "Your winings: " + countWin;
+                startGame();
+            }, 100);
         }
         // Worng character sequence
-        else {
-            console.log(userChar + " is wrong")
+        function wrongCharacter() {
             wrongChar.push(userChar);
             used_Char.push(userChar);
             countDown = countDown - 1;
             document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
             document.getElementById("wrongChar").textContent = wrongChar;
-            // Game over sequence
-            if (countDown === 0) {
+        }
+        // Game over sequence
+        function gameOver() {
+            window.setTimeout(function () {
                 alert('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
-                reCountWin();
-                var winCount2 = document.getElementById("Winings");
-                winCount2.textContent = "Your winings: " + countWin;
                 startGame();
+            }, 100);
+        }
+
+        if (used_Char.includes(userChar)) {
+            console.log("you already chose this character");
+        }
+        else if ((chosenWord.indexOf(userChar) > -1)) {
+            console.log(userChar + " is correct")
+            correctCharacter();
+            if (countUp === chosenWord.length) {
+                imgOpacityChange(1, 0);
+                guessedAllCharacters();
+            }
+        }
+        else {
+            console.log(userChar + " is wrong");
+            if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
+                imgDarkerOpacity = imgDarkerOpacity + 0.2;
+                imgOpacityChange(imgDarkerOpacity, 1);
+                wrongCharacter();
+                if (countDown === 0) {
+                    gameOver()
+                }
             }
         }
     }

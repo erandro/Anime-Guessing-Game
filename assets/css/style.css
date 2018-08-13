@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(66, 49, 129);
+    color: white;
+}
+pre {
+    color: white;
+}
+#winings {
+    display: flex;
+    justify-content: flex-end;
+}
+.imgCorner {
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+#animeImage {
+    object-fit: contain;
+    height: 600px;
+    width: 800px;
+}
