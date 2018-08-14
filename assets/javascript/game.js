@@ -1,62 +1,126 @@
-// ***Hangman word game***
-
-// bug fixing:
-// 1. disable non letter keys - V
-// 2. fix capital letter situation - V
-// 3. add start button -
-// 4. 
+// ***"Hangman" word game***
 
 var animeShows = {
-    //"sword art online": "assets/images/",
+    "eureka seven": ["assets/images/eureka_seven.png",
+        "assets/images/eureka_seven2.png"
+    ],
+    "fullmetal alchemist": ["assets/images/fullmetal_alchemist.png",
+        "assets/images/fullmetal_alchemist2.png"
+    ],
+    "sailor moon": ["assets/images/sailor_moon.png",
+        "assets/images/sailor_moon2.png"
+    ],
+    "one piece": ["assets/images/one_piece.png",
+        "assets/images/one_piece2.png"
+    ],
+    "sword art online": ["assets/images/sword_art_online.png",
+        "assets/images/sword_art_online2.png"
+    ],
     "berserk": ["assets/images/berserk.png",
         "assets/images/berserk2.png"
     ],
-    //"kill la kill": "assets/images/",
-    //"naruto shippuden": "assets/images/",
+    "kill la kill": ["assets/images/kill_la_kill.png",
+        "assets/images/kill_la_kill2.png"
+    ],
+    "naruto shippuden": ["assets/images/naruto_shippuden.png",
+        "assets/images/naruto_shippuden2.png"
+    ],
     "digimon": ["assets/images/digimon.png",
         "assets/images/digimon2.png"
     ],
-    //"death parade": "assets/images/",
-    //"no game no life": "assets/images/",
-    //"nichijou": "assets/images/",
-    //"one punch man": "assets/images/",
-    //"katana maidens": "assets/images/",
+    "death parade": ["assets/images/death_parade.png",
+        "assets/images/death_parade2.png"
+    ],
+    "no game no life": ["assets/images/no_game_no life.png",
+        "assets/images/no_game_no life2.png"
+    ],
+    "nichijou": ["assets/images/nichijou.png",
+        "assets/images/nichijou2.png"
+    ],
+    "one punch man": ["assets/images/one_punch_man.png",
+        "assets/images/one_punch_man2.png"
+    ],
+    "katana maidens": ["assets/images/katana_maidens.png",
+        "assets/images/katana_maidens2.png"
+    ],
     "bleach": ["assets/images/bleach.png",
         "assets/images/bleach2.png"
     ],
     "hunter x hunter": ["assets/images/hunter_x_hunter.png",
         "assets/images/hunter_x_hunter2.png"
     ],
-    //"girls last tour": "assets/images/",
-    //"basilisk": "assets/images/",
-    //"the saga of tanya the evil": "assets/images/",
-    //"kids on the slope": "assets/images/",
-    //"the ancient magus bride": "assets/images/",
-    //"zodiac war": "assets/images/",
-    //"miss kobayashis dragon maid": "assets/images/",
-    //"food wars": "assets/images/",
-    //"kinos journey": "assets/images/",
-    //"ping pong the animation": "assets/images/",
-    //"made in abyss": "assets/images/",
-    //"little witch academia": "assets/images/",
+    "girls last tour": ["assets/images/girls_last_tour.png",
+        "assets/images/girls_last_tour2.png"
+    ],
+    "basilisk": ["assets/images/basilisk.png",
+        "assets/images/basilisk2.png"
+    ],
+    "the saga of tanya the evil": ["assets/images/the_saga_of_tanya_the_evil.png",
+        "assets/images/the_saga_of_tanya_the_evil2.png"
+    ],
+    "kids on the slope": ["assets/images/kids_on_the_slope.png",
+        "assets/images/kids_on_the_slope2.png"
+    ],
+    "the ancient magus bride": ["assets/images/the_ancient_magus_bride.png",
+        "assets/images/the_ancient_magus_bride2.png"
+    ],
+    "zodiac war": ["assets/images/zodiac_war.png",
+        "assets/images/zodiac_war2.png"
+    ],
+    "miss kobayashis dragon maid": ["assets/images/miss_kobayashis_dragon_maid.png",
+        "assets/images/miss_kobayashis_dragon_maid2.png"
+    ],
+    "food wars": ["assets/images/food_wars.png",
+        "assets/images/food_wars2.png"
+    ],
+    "kinos journey": ["assets/images/kinos_journey.png",
+        "assets/images/kinos_journey2.png"
+    ],
+    "ping pong the animation": ["assets/images/ping_pong_the_animation.png",
+        "assets/images/ping_pong_the_animation2.png"
+    ],
+    "made in abyss": ["assets/images/made_in_abyss.png",
+        "assets/images/made_in_abyss2.png"
+    ],
+    "little witch academia": ["assets/images/little_witch_academia.png",
+        "assets/images/little_witch_academia2.png"
+    ],
     "boruto": ["assets/images/boruto.png",
         "assets/images/boruto2.png"
     ],
-    //"death note": "assets/images/",
-    //"fairy tail": "assets/images/",
-    //"my hero academia": "assets/images/",
+    "death note": ["assets/images/death_note.png",
+        "assets/images/death_note2.png"
+    ],
+    "fairy tail": ["assets/images/fairy_tail.png",
+        "assets/images/fairy_tail2.png"
+    ],
+    "my hero academia": ["assets/images/my_hero_academia.png",
+        "assets/images/my_hero_academia2.png"
+    ],
     "naruto": ["assets/images/naruto.png",
         "assets/images/naruto2.png"
     ],
-    //"the twelve kingdoms": "assets/images/",
-    //"neon genesis evangelion": "assets/images/",
-    //"vision of escaflowne": "assets/images/",
-    //"cowboy bebop": "assets/images/",
+    "the twelve kingdoms": ["assets/images/the_twelve_kingdoms.png",
+        "assets/images/the_twelve_kingdoms2.png"
+    ],
+    "neon genesis evangelion": ["assets/images/neon_genesis_evangelion.png",
+        "assets/images/neon_genesis_evangelion2.png"
+    ],
+    "vision of escaflowne": ["assets/images/vision_of_escaflowne.png",
+        "assets/images/vision_of_escaflowne2.png"
+    ],
+    "cowboy bebop": ["assets/images/cowboy_bebop.png",
+        "assets/images/cowboy_bebop2.png"
+    ],
     "pokemon": ["assets/images/pokemon.png",
         "assets/images/pokemon2.png"
     ],
-    //"dragon ball z": "assets/images/",
-    //"attack on titan": "assets/images/"
+    "dragon ball z": ["assets/images/dragon_ball_z.png",
+        "assets/images/dragon_ball_z2.png"
+    ],
+    "attack on titan": ["assets/images/attack_on_titan.png",
+        "assets/images/attack_on_titan2.png"
+    ]
 };
 var words = Object.keys(animeShows);
 var alredyChosenWords = [];
@@ -158,7 +222,7 @@ function game() {
                 countWin++;
                 document.getElementById("winings").textContent = "Your winings: " + countWin;
                 startGame();
-            }, 100);
+            }, 1000);
         }
         // Worng character sequence
         function wrongCharacter() {
@@ -173,7 +237,7 @@ function game() {
             window.setTimeout(function () {
                 alert('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
                 startGame();
-            }, 100);
+            }, 1000);
         }
 
         if (used_Char.includes(userChar)) {
