@@ -127,7 +127,7 @@ var alredyChosenWords = [];
 var countWin = 0;
 var imgOpacity;
 var imgDarkerOpacity = 0;
-
+var modelState = undefined;
 // Change img opacity
 function imgOpacityChange(theOpacity, imgIndex) {
     imgOpacity = theOpacity;
@@ -138,7 +138,9 @@ function imgOpacityChange(theOpacity, imgIndex) {
 // checks if word was choosed
 function isWordChosen() {
     if (words.length === alredyChosenWords.length) {
-        alert("I'm out off words\n\nThanks for palying");
+        modelState = "end";
+        document.getElementById("modal-text").append("I'm out off words\n\nThanks for palying");
+        modal.style.display = "block";
     }
     else if (alredyChosenWords.includes(chosenWord)) {
         console.log("already chosen word");
@@ -150,6 +152,46 @@ function isWordChosen() {
         imgOpacityChange(0, 1);
         game();
     }
+}
+
+// Modal
+var modal = document.getElementById('modalId');
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function () {
+    if (modelState === "win") {
+        modelWin();
+    } else if (modelState === "lose") {
+        modelLose();
+    } else if (modelState === "end") {
+        modelEnd();
+    }
+}
+window.onclick = function (event) {
+    if (event.target == modal) {
+        if (modelState === "win") {
+            modelWin();
+        } else if (modelState === "lose") {
+            modelLose();
+        } else if (modelState === "end") {
+            modelEnd();
+        }
+    }
+}
+function modelWin() {
+    modal.style.display = "none";
+    document.getElementById("modal-text").innerHTML = "";
+    countWin++;
+    document.getElementById("winings").textContent = "Your winings: " + countWin;
+    startGame();
+}
+function modelLose() {
+    modal.style.display = "none";
+    document.getElementById("modal-text").innerHTML = "";
+    startGame();
+}
+function modelEnd() {
+    window.location.reload(true);
 }
 
 // get unchosen word and start playing
@@ -217,12 +259,9 @@ function game() {
         }
         // Guessed all characters sequence
         function guessedAllCharacters() {
-            window.setTimeout(function () {
-                alert("You got that!");
-                countWin++;
-                document.getElementById("winings").textContent = "Your winings: " + countWin;
-                startGame();
-            }, 1000);
+            modelState = "win";
+            document.getElementById("modal-text").append("You got that!");
+            modal.style.display = "block";
         }
         // Worng character sequence
         function wrongCharacter() {
@@ -234,10 +273,9 @@ function game() {
         }
         // Game over sequence
         function gameOver() {
-            window.setTimeout(function () {
-                alert('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
-                startGame();
-            }, 1000);
+            modelState = "lose";
+            document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
+            modal.style.display = "block";
         }
 
         if (used_Char.includes(userChar)) {
