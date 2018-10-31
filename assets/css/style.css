@@ -4,11 +4,6 @@ body {
 }
 p {
     color: white;
-    /*white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap; 
-    white-space: -o-pre-wrap; 
-    word-wrap: break-word;*/ 
     letter-spacing: 17px; 
 }
 #winings {
@@ -32,7 +27,7 @@ p {
 
 #keyboard {
     position: absolute;
-    bottom: 20vw;
+    bottom: 15vw;
     display: none;
     flex-wrap: wrap;
 }
@@ -133,6 +128,10 @@ div.key > span:active {
     
     #keyboard {
         display: flex;
+    }
+
+    .imgCorner {
+        justify-content: center;
     }
 
     .modal {
