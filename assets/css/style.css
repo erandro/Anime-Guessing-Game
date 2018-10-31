@@ -10,6 +10,14 @@ p {
     display: flex;
     justify-content: flex-end;
 }
+#wrong-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+.margin-right {
+    margin-right: 15px;
+}
 .imgCorner {
     display: flex;
     justify-content: flex-end;
