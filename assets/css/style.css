@@ -27,7 +27,7 @@ p {
 
 #keyboard {
     position: absolute;
-    bottom: 15vw;
+    bottom: 5vw;
     display: none;
     flex-wrap: wrap;
 }
@@ -63,13 +63,13 @@ div.key > span {
 	cursor: pointer;
 }
 div.key > span:hover {
-	background-color: #75b4fb;
-	border: 1px solid #5a88c5;
+	background-color: rgb(116, 79, 248);
+	border: 1px solid rgb(92, 63, 197);
 	color: #fff;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-	-webkit-box-shadow: 0px 3px 0px -2px rgba(117,180,251,1), 0px 2px 0px 0px rgba(90,136,197,1);
-	-moz-box-shadow: 0px 3px 0px -2px rgba(117,180,251,1), 0px 2px 0px 0px rgba(90,136,197,1);
-	box-shadow: 0px 3px 0px -2px rgba(117,180,251,1), 0px 2px 0px 0px rgba(90,136,197,1);
+	-webkit-box-shadow: 0px 3px 0px -2px rgba(116, 79, 248,1), 0px 2px 0px 0px rgba(92, 63, 197,1);
+	-moz-box-shadow: 0px 3px 0px -2px rgba(116, 79, 248,1), 0px 2px 0px 0px rgba(92, 63, 197,1);
+	box-shadow: 0px 3px 0px -2px rgba(116, 79, 248,1), 0px 2px 0px 0px rgba(92, 63, 197,1);
 	cursor: pointer;
 }
 div.key > span:active {
@@ -78,7 +78,6 @@ div.key > span:active {
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 }
-
 
 .modal {
     display: none;
