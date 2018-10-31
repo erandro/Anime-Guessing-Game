@@ -215,7 +215,8 @@ function game() {
     // Blank and space the chosen word
     var blankWord = "_".repeat(chosenWord.length);
     function SpaceInWord() {
-        spacedWord = (blankWord.split('').join(' '));
+        // spacedWord = (blankWord.split('').join(' '));
+        spacedWord = blankWord;
     }
     SpaceInWord();
     console.log(spacedWord);
@@ -233,7 +234,7 @@ function game() {
                 SpaceInWord();
                 console.log(spacedWord);
                 countUp++;
-                document.getElementById("theWord").textContent = spacedWord;
+                $("#theWord").text(spacedWord);
                 //document.getElementById("animeImage").src = "";
             }
         }
@@ -243,7 +244,7 @@ function game() {
     addChar(' ');
 
     // Display the word, number of mistakes and worng characters in html 
-    document.getElementById("theWord").textContent = spacedWord;
+    $("#theWord").text(spacedWord);
     document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
     document.getElementById("wrongChar").textContent = wrongChar;
 
@@ -301,4 +302,58 @@ function game() {
             }
         }
     }
+
+    $(".key").unbind().click(function () {
+        var userChar = $(this).children().text();
+        // Correct character sequence
+        function correctCharacter() {
+            used_Char.push(userChar);
+            addChar(userChar);
+        }
+        // Guessed all characters sequence
+        function guessedAllCharacters() {
+            modelState = "win";
+            document.getElementById("modal-text").append("You got that!");
+            modal.style.display = "block";
+        }
+        // Worng character sequence
+        function wrongCharacter() {
+            wrongChar.push(userChar);
+            used_Char.push(userChar);
+            countDown = countDown - 1;
+            document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
+            document.getElementById("wrongChar").textContent = wrongChar;
+        }
+        // Game over sequence
+        function gameOver() {
+            modelState = "lose";
+            document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
+            modal.style.display = "block";
+        }
+
+        if (used_Char.includes(userChar)) {
+            console.log("you already chose this character");
+        }
+        else if ((chosenWord.indexOf(userChar) > -1)) {
+            console.log(userChar + " is correct")
+            correctCharacter();
+            if (countUp === chosenWord.length) {
+                imgOpacityChange(1, 0);
+                guessedAllCharacters();
+            }
+        }
+        else {
+            console.log(userChar + " is wrong");
+            if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
+                imgDarkerOpacity = imgDarkerOpacity + 0.2;
+                imgOpacityChange(imgDarkerOpacity, 1);
+                wrongCharacter();
+                if (countDown === 0) {
+                    gameOver()
+                }
+            }
+        }
+
+    })
+
 }

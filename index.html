@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Word Guess Game</title>
+    <title>Guess the Anime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                <h6 id="winings">So far you didn't won yet</h6>
+                <h6 id="winings">So far you didn't win yet</h6>
             </div>
         </div>
         <div class="row">
@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h1>
-                    <pre id="theWord"></pre>
+                    <p id="theWord"></p>
                 </h1>
             </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <h5 id="countDown">ss</h5>
-                <h6>Worng characters:</h6>
+                <h6>Wrong characters:</h6>
                 <h6 id="wrongChar">ss</h6>
             </div>
         </div>
@@ -55,14 +55,112 @@
         <img id="animeImage" src="">
     </div>
 
+
+
+    <div id="keyboard">
+
+        <div class="key-row">
+            <div class="key">
+                <span>q</span>
+            </div>
+            <div class="key">
+                <span>w</span>
+            </div>
+            <div class="key">
+                <span>e</span>
+            </div>
+            <div class="key">
+                <span>r</span>
+            </div>
+            <div class="key">
+                <span>t</span>
+            </div>
+            <div class="key">
+                <span>y</span>
+            </div>
+            <div class="key">
+                <span>u</span>
+            </div>
+            <div class="key">
+                <span>i</span>
+            </div>
+            <div class="key">
+                <span>o</span>
+            </div>
+            <div class="key">
+                <span>p</span>
+            </div>
+        </div>
+
+        <div class="key-row">
+            <div class="key">
+                <span>a</span>
+            </div>
+            <div class="key">
+                <span>s</span>
+            </div>
+            <div class="key">
+                <span>d</span>
+            </div>
+            <div class="key">
+                <span>f</span>
+            </div>
+            <div class="key">
+                <span>g</span>
+            </div>
+            <div class="key">
+                <span>h</span>
+            </div>
+            <div class="key">
+                <span>j</span>
+            </div>
+            <div class="key">
+                <span>k</span>
+            </div>
+            <div class="key">
+                <span>l</span>
+            </div>
+        </div>
+
+        <div class="key-row">
+            <div class="key">
+                <span>z</span>
+            </div>
+            <div class="key">
+                <span>x</span>
+            </div>
+            <div class="key">
+                <span>c</span>
+            </div>
+            <div class="key">
+                <span>v</span>
+            </div>
+            <div class="key">
+                <span>b</span>
+            </div>
+            <div class="key">
+                <span>n</span>
+            </div>
+            <div class="key">
+                <span>m</span>
+            </div>
+        </div>
+
+    </div>
+
+
+
     <!-- The Modal -->
     <div id="modalId" class="modal">
         <div class="modal-content">
             <span id="modal-text"></span>
-            <span class="close">&times;</span>
+            <span class="close"></span>
         </div>
     </div>
 
+    <!-- jquery -->
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js' integrity='sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8='
+        crossorigin='anonymous'></script>
     <!-- javascript -->
     <script src="./assets/javascript/game.js"></script>
 </body>
