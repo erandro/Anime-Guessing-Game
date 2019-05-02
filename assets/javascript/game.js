@@ -156,6 +156,7 @@ function isWordChosen() {
 
 // Modal
 var modal = document.getElementById('modalId');
+var modalisDisplayed = false;
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function () {
@@ -180,6 +181,7 @@ window.onclick = function (event) {
 }
 function modelWin() {
     modal.style.display = "none";
+    modalisDisplayed = false;
     document.getElementById("modal-text").innerHTML = "";
     countWin++;
     document.getElementById("winings").textContent = "Your winings: " + countWin;
@@ -187,6 +189,7 @@ function modelWin() {
 }
 function modelLose() {
     modal.style.display = "none";
+    modalisDisplayed = false;
     document.getElementById("modal-text").innerHTML = "";
     startGame();
 }
@@ -248,112 +251,121 @@ function game() {
     document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
     document.getElementById("wrongChar").textContent = wrongChar;
 
-    // When character is pressed sequence
+    // When character is pressed sequence - keyboard
     document.onkeyup = function (pressedKey) {
-        var userChar = pressedKey.key;
-        console.log("you chose " + userChar);
+        if (!modalisDisplayed) {
+            var userChar = pressedKey.key;
+            console.log("you chose " + userChar);
 
-        // Correct character sequence
-        function correctCharacter() {
-            used_Char.push(userChar);
-            addChar(userChar);
-        }
-        // Guessed all characters sequence
-        function guessedAllCharacters() {
-            modelState = "win";
-            document.getElementById("modal-text").append("You got that!");
-            modal.style.display = "block";
-        }
-        // Worng character sequence
-        function wrongCharacter() {
-            wrongChar.push(userChar);
-            used_Char.push(userChar);
-            countDown = countDown - 1;
-            document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
-            document.getElementById("wrongChar").textContent = wrongChar;
-        }
-        // Game over sequence
-        function gameOver() {
-            modelState = "lose";
-            document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
-            modal.style.display = "block";
-        }
-
-        if (used_Char.includes(userChar)) {
-            console.log("you already chose this character");
-        }
-        else if ((chosenWord.indexOf(userChar) > -1)) {
-            console.log(userChar + " is correct")
-            correctCharacter();
-            if (countUp === chosenWord.length) {
-                imgOpacityChange(1, 0);
-                guessedAllCharacters();
+            // Correct character sequence
+            function correctCharacter() {
+                used_Char.push(userChar);
+                addChar(userChar);
             }
-        }
-        else {
-            console.log(userChar + " is wrong");
-            if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
-                imgDarkerOpacity = imgDarkerOpacity + 0.2;
-                imgOpacityChange(imgDarkerOpacity, 1);
-                wrongCharacter();
-                if (countDown === 0) {
-                    gameOver()
+            // Guessed all characters sequence
+            function guessedAllCharacters() {
+                modelState = "win";
+                document.getElementById("modal-text").append("You got that!");
+                modal.style.display = "block";
+                modalisDisplayed = true;
+            }
+            // Worng character sequence
+            function wrongCharacter() {
+                wrongChar.push(userChar);
+                used_Char.push(userChar);
+                countDown = countDown - 1;
+                document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
+                document.getElementById("wrongChar").textContent = wrongChar;
+            }
+            // Game over sequence
+            function gameOver() {
+                modelState = "lose";
+                document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
+                modal.style.display = "block";
+                modalisDisplayed = true;
+            }
+
+            if (used_Char.includes(userChar)) {
+                console.log("you already chose this character");
+            }
+            else if ((chosenWord.indexOf(userChar) > -1)) {
+                console.log(userChar + " is correct")
+                correctCharacter();
+                if (countUp === chosenWord.length) {
+                    imgOpacityChange(1, 0);
+                    guessedAllCharacters();
+                }
+            }
+            else {
+                console.log(userChar + " is wrong");
+                if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
+                    imgDarkerOpacity = imgDarkerOpacity + 0.2;
+                    imgOpacityChange(imgDarkerOpacity, 1);
+                    wrongCharacter();
+                    if (countDown === 0) {
+                        gameOver()
+                    }
                 }
             }
         }
     }
 
+    // When character is pressed sequence - mobile
     $(".key").unbind().click(function () {
-        var userChar = $(this).children().text();
-        // Correct character sequence
-        function correctCharacter() {
-            used_Char.push(userChar);
-            addChar(userChar);
-        }
-        // Guessed all characters sequence
-        function guessedAllCharacters() {
-            modelState = "win";
-            document.getElementById("modal-text").append("You got that!");
-            modal.style.display = "block";
-        }
-        // Worng character sequence
-        function wrongCharacter() {
-            wrongChar.push(userChar);
-            used_Char.push(userChar);
-            countDown = countDown - 1;
-            document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
-            document.getElementById("wrongChar").textContent = wrongChar;
-        }
-        // Game over sequence
-        function gameOver() {
-            modelState = "lose";
-            document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
-            modal.style.display = "block";
-        }
-
-        if (used_Char.includes(userChar)) {
-            console.log("you already chose this character");
-        }
-        else if ((chosenWord.indexOf(userChar) > -1)) {
-            console.log(userChar + " is correct")
-            correctCharacter();
-            if (countUp === chosenWord.length) {
-                imgOpacityChange(1, 0);
-                guessedAllCharacters();
+        if (!modalisDisplayed) {
+            var userChar = $(this).children().text();
+            // Correct character sequence
+            function correctCharacter() {
+                used_Char.push(userChar);
+                addChar(userChar);
             }
-        }
-        else {
-            console.log(userChar + " is wrong");
-            if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
-                imgDarkerOpacity = imgDarkerOpacity + 0.2;
-                imgOpacityChange(imgDarkerOpacity, 1);
-                wrongCharacter();
-                if (countDown === 0) {
-                    gameOver()
+            // Guessed all characters sequence
+            function guessedAllCharacters() {
+                modelState = "win";
+                document.getElementById("modal-text").append("You got that!");
+                modal.style.display = "block";
+                modalisDisplayed = true;
+            }
+            // Worng character sequence
+            function wrongCharacter() {
+                wrongChar.push(userChar);
+                used_Char.push(userChar);
+                countDown = countDown - 1;
+                document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
+                document.getElementById("wrongChar").textContent = wrongChar;
+            }
+            // Game over sequence
+            function gameOver() {
+                modelState = "lose";
+                document.getElementById("modal-text").append('Oh no, you lost.\n \n it was "' + chosenWord.toUpperCase() + '"');
+                modal.style.display = "block";
+                modalisDisplayed = true;
+
+            }
+
+            if (used_Char.includes(userChar)) {
+                console.log("you already chose this character");
+            }
+            else if ((chosenWord.indexOf(userChar) > -1)) {
+                console.log(userChar + " is correct")
+                correctCharacter();
+                if (countUp === chosenWord.length) {
+                    imgOpacityChange(1, 0);
+                    guessedAllCharacters();
+                }
+            }
+            else {
+                console.log(userChar + " is wrong");
+                if ((userChar === "a") || (userChar === "b") || (userChar === "c") || (userChar === "d") || (userChar === "e") || (userChar === "f") || (userChar === "g") || (userChar === "h") || (userChar === "i") || (userChar === "j") || (userChar === "k") || (userChar === "m") || (userChar === "l") || (userChar === "n") || (userChar === "o") || (userChar === "p") || (userChar === "q") || (userChar === "r") || (userChar === "s") || (userChar === "t") || (userChar === "u") || (userChar === "v") || (userChar === "w") || (userChar === "x") || (userChar === "y") || (userChar === "z")) {
+                    imgDarkerOpacity = imgDarkerOpacity + 0.2;
+                    imgOpacityChange(imgDarkerOpacity, 1);
+                    wrongCharacter();
+                    if (countDown === 0) {
+                        gameOver()
+                    }
                 }
             }
         }
-
     })
 
 }
