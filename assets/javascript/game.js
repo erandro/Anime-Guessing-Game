@@ -120,6 +120,36 @@ var animeShows = {
     ],
     "attack on titan": ["assets/images/attack_on_titan.png",
         "assets/images/attack_on_titan2.png"
+    ],
+    "akudama drive": ["assets/images/akudama_drive.png",
+        "assets/images/akudama_drive2.png"
+    ],
+    "anohana the flower we saw that day": ["assets/images/anohana_the_flower_we_saw_that_day.png",
+        "assets/images/anohana_the_flower_we_saw_that_day2.png"
+    ],
+    "bna": ["assets/images/bna.png",
+        "assets/images/bna2.png"
+    ],
+    "deca dance": ["assets/images/deca_dance.png",
+        "assets/images/deca_dance2.png"
+    ],
+    "jujutsu kaisen": ["assets/images/jujutsu_kaisen.png",
+        "assets/images/jujutsu_kaisen2.png"
+    ],
+    "mwz": ["assets/images/mwz.png",
+        "assets/images/mwz2.png"
+    ],
+    "odd taxi": ["assets/images/odd_taxi.png",
+        "assets/images/odd_taxi2.png"
+    ],
+    "the promised neverland": ["assets/images/the_promised_neverland.png",
+        "assets/images/the_promised_neverland2.png"
+    ],
+    "to your eternity": ["assets/images/to_your_eternity.png",
+        "assets/images/to_your_eternity2.png"
+    ],
+    "your lie in april": ["assets/images/your_lie_in_april.png",
+        "assets/images/your_lie_in_april2.png"
     ]
 };
 var words = Object.keys(animeShows);
