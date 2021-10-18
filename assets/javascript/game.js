@@ -1,6 +1,15 @@
 // ***"Hangman" word game***
 
 var animeShows = {
+    "inuyasha": ["assets/images/inuyasha.png",
+        "assets/images/inuyasha2.png"
+    ],
+    "tokyo ghoul": ["assets/images/tokyo_ghoul.png",
+        "assets/images/tokyo_ghoul2.png"
+    ],
+    "tower of god": ["assets/images/tower_of_god.png",
+        "assets/images/tower_of_god2.png"
+    ],
     "eureka seven": ["assets/images/eureka_seven.png",
         "assets/images/eureka_seven2.png"
     ],
