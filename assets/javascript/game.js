@@ -1,6 +1,9 @@
 // ***"Hangman" word game***
 
 var animeShows = {
+    "wandering son": ["assets/images/hourou_musuko.png",
+        "assets/images/hourou_musuko2.png"
+    ],
     "inuyasha": ["assets/images/inuyasha.png",
         "assets/images/inuyasha2.png"
     ],
