@@ -256,6 +256,9 @@ function game() {
     var used_Char = [];
     var countDown = 5;
     var countUp = 0;
+    var countOtherChar = 0;
+    var otherCharAlert = false;
+    var interval = null;
 
     // Blank and space the chosen word
     var blankWord = "_".repeat(chosenWord.length);
@@ -318,6 +321,11 @@ function game() {
                 countDown = countDown - 1;
                 document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
                 document.getElementById("wrongChar").textContent = wrongChar;
+                if(otherCharAlert){
+                    otherCharAlert=false
+                    countOtherChar=0;
+                    clearInterval(interval);
+                }
             }
             // Game over sequence
             function gameOver() {
@@ -326,11 +334,24 @@ function game() {
                 modal.style.display = "block";
                 modalisDisplayed = true;
             }
+            // Blink text
+            function bninkText(id) {
+                interval = setInterval(function () {
+                    var alertAboutChar = document.getElementById(id);
+                    alertAboutChar.style.visibility = (alertAboutChar.style.visibility == 'hidden' ? '' : 'hidden');
+                }, blink_speed);
+            }
 
             if (used_Char.includes(userChar)) {
                 console.log("you already chose this character");
             }
             else if ((chosenWord.indexOf(userChar) > -1)) {
+                if(otherCharAlert){
+                    otherCharAlert=false
+                    countOtherChar=0;
+                    clearInterval(interval);
+                    document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
+                }
                 console.log(userChar + " is correct")
                 correctCharacter();
                 if (countUp === chosenWord.length) {
@@ -346,6 +367,15 @@ function game() {
                     wrongCharacter();
                     if (countDown === 0) {
                         gameOver()
+                    }
+                } else {
+                    // Alert user if he's not typing English char
+                    countOtherChar++;
+                    if (countOtherChar === 6){
+                        document.getElementById("countDown").textContent = "Please check that your Caps Lock key is off and that you are using English typing";
+                        otherCharAlert = true;
+                        var blink_speed = 1000;
+                        bninkText('countDown');
                     }
                 }
             }
