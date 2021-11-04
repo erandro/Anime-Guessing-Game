@@ -1,6 +1,24 @@
 // ***"Hangman" word game***
 
 var animeShows = {
+    "devilman crybaby": ["assets/images/devilman_crybaby.png",
+        "assets/images/devilman_crybaby2.png"
+    ],
+    "devilman": ["assets/images/devilman.png",
+        "assets/images/devilman2.png"
+    ],
+    "demon slayer": ["assets/images/demon_slayer.png",
+        "assets/images/demon_slayer2.png"
+    ],
+    "erased": ["assets/images/erased.png",
+        "assets/images/erased2.png"
+    ],
+    "angels of death": ["assets/images/angels_of_death.png",
+        "assets/images/angels_of_death2.png"
+    ],
+    "baby steps": ["assets/images/baby_steps.png",
+        "assets/images/baby_steps2.png"
+    ],
     "wandering son": ["assets/images/hourou_musuko.png",
         "assets/images/hourou_musuko2.png"
     ],
