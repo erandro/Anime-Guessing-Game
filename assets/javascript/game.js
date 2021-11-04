@@ -188,6 +188,8 @@ var countWin = 0;
 var imgOpacity;
 var imgDarkerOpacity = 0;
 var modelState = undefined;
+var gameMistakes = 0;
+var totalMistakesScore = 0;
 // Change img opacity
 function imgOpacityChange(theOpacity, imgIndex) {
     imgOpacity = theOpacity;
@@ -199,7 +201,8 @@ function imgOpacityChange(theOpacity, imgIndex) {
 function isWordChosen() {
     if (words.length === alredyChosenWords.length) {
         modelState = "end";
-        document.getElementById("modal-text").append("I'm out off words\n\nThanks for palying");
+        var finalScore = countWin - totalMistakesScore;
+        document.getElementById("modal-text").append("I'm out off words\n\nThanks for palying\nYour final score is " + finalScore);
         modal.style.display = "block";
     }
     else if (alredyChosenWords.includes(chosenWord)) {
@@ -251,6 +254,8 @@ function modelLose() {
     modal.style.display = "none";
     modalisDisplayed = false;
     document.getElementById("modal-text").innerHTML = "";
+    totalMistakesScore = totalMistakesScore + gameMistakes*0.1;
+    gameMistakes = 0;
     startGame();
 }
 function modelEnd() {
@@ -337,6 +342,7 @@ function game() {
                 wrongChar.push(userChar);
                 used_Char.push(userChar);
                 countDown = countDown - 1;
+                gameMistakes++;
                 document.getElementById("countDown").textContent = "You have " + countDown + " guesses left";
                 document.getElementById("wrongChar").textContent = wrongChar;
                 if(otherCharAlert){
