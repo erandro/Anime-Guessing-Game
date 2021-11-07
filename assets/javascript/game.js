@@ -1,6 +1,24 @@
 // ***"Hangman" word game***
 
 var animeShows = {
+     "dr stone": ["assets/images/dr_stone.png",
+        "assets/images/dr_stone2.png"
+    ],
+    "durarara": ["assets/images/durarara.png",
+        "assets/images/durarara2.png"
+    ],
+    "flcl": ["assets/images/flcl.png",
+        "assets/images/flcl2.png"
+    ],
+    "fate zero": ["assets/images/fate_zero.png",
+        "assets/images/fate_zero2.png"
+    ],
+    "gankutsuou the count of monte cristo": ["assets/images/gankutsuou.png",
+        "assets/images/gankutsuou2.png"
+    ],
+    "haikyuu": ["assets/images/haikyuu.png",
+        "assets/images/haikyuu2.png"
+    ],
     "devilman crybaby": ["assets/images/devilman_crybaby.png",
         "assets/images/devilman_crybaby2.png"
     ],
