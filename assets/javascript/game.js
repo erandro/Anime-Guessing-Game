@@ -1,8 +1,32 @@
 // ***"Hangman" word game***
 
 var animeShows = {
-     "dr stone": ["assets/images/dr_stone.png",
+    "ghost in the shell sac": ["assets/images/ghost_in_the_shell_sac.png",
+        "assets/images/ghost_in_the_shell_sac2.png"
+    ],
+    "akame ga kill": ["assets/images/akame_ga_kill.png",
+        "assets/images/akame_ga_kill2.png"
+    ],
+    "re zero": ["assets/images/re_zero.png",
+        "assets/images/re_zero2.png"
+    ],
+    "moomin": ["assets/images/moomin.png",
+        "assets/images/moomin2.png"
+    ],
+    "magi the labyrinth of magic": ["assets/images/magi_the_labyrinth_of_magic.png",
+        "assets/images/magi_the_labyrinth_of_magic2.png"
+    ],
+    "madame peppermint": ["assets/images/madame_peppermint.png",
+        "assets/images/madame_peppermint2.png"
+    ],
+    "log horizon": ["assets/images/log_horizon.png",
+        "assets/images/log_horizon2.png"
+    ],
+    "dr stone": ["assets/images/dr_stone.png",
         "assets/images/dr_stone2.png"
+    ],
+    "konosuba": ["assets/images/konosuba.png",
+        "assets/images/konosuba2.png"
     ],
     "durarara": ["assets/images/durarara.png",
         "assets/images/durarara2.png"
