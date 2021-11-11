@@ -1,6 +1,30 @@
 // ***"Hangman" word game***
 
 var animeShows = {
+    "vinland saga": ["assets/images/vinland_saga.png",
+        "assets/images/vinland_saga2.png"
+    ],
+    "three thousand leagues in search of mother": ["assets/images/three_thousand_leagues_in_search_of_mother.png",
+        "assets/images/three_thousand_leagues_in_search_of_mother2.png"
+    ],
+    "the wonderful wizard of oz": ["assets/images/the_wonderful_wizard_of_oz.png",
+        "assets/images/the_wonderful_wizard_of_oz2.png"
+    ],
+    "the wonderful adventure of nils": ["assets/images/the_wonderful_adventure_of_nils.png",
+        "assets/images/the_wonderful_adventure_of_nils2.png"
+    ],
+    "the seven deadly sins": ["assets/images/the_seven_deadly_sins.png",
+        "assets/images/the_seven_deadly_sins2.png"
+    ],
+    "the adventures of peter pan": ["assets/images/the_adventures_of_peter_pan.png",
+        "assets/images/the_adventures_of_peter_pan2.png"
+    ],
+    "taotao": ["assets/images/taotao.png",
+        "assets/images/taotao2.png"
+    ],
+    "samurai pizza cats": ["assets/images/samurai_pizza_cats.png",
+        "assets/images/samurai_pizza_cats2.png"
+    ]/*,
     "ghost in the shell sac": ["assets/images/ghost_in_the_shell_sac.png",
         "assets/images/ghost_in_the_shell_sac2.png"
     ],
@@ -222,7 +246,7 @@ var animeShows = {
     ],
     "your lie in april": ["assets/images/your_lie_in_april.png",
         "assets/images/your_lie_in_april2.png"
-    ]
+    ]*/
 };
 var words = Object.keys(animeShows);
 var alredyChosenWords = [];
