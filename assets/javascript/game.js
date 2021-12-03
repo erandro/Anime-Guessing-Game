@@ -24,7 +24,7 @@ var animeShows = {
     ],
     "samurai pizza cats": ["assets/images/samurai_pizza_cats.png",
         "assets/images/samurai_pizza_cats2.png"
-    ]/*,
+    ],
     "ghost in the shell sac": ["assets/images/ghost_in_the_shell_sac.png",
         "assets/images/ghost_in_the_shell_sac2.png"
     ],
@@ -246,7 +246,7 @@ var animeShows = {
     ],
     "your lie in april": ["assets/images/your_lie_in_april.png",
         "assets/images/your_lie_in_april2.png"
-    ]*/
+    ]
 };
 var words = Object.keys(animeShows);
 var alredyChosenWords = [];
