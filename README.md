@@ -1,5 +1,8 @@
 # Anime Guessing Game
 
+### Live Link
+[🔗 Anime Guessing Game](https://erandro.github.io/Anime-Guessing-Game/)
+
 ### Overview
 This project is a word guess game where the user is guessing Anime shows. The inspiration for the style came from AnimeLab.com website.
 
